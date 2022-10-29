@@ -55,12 +55,13 @@ body::-webkit-scrollbar-thumb:hover {
 }
 
 .arrow-design {
-    width: 240px;
+    width: auto;
     height: 60px;
     position: relative;
     background: #FF5F24;
     color: white;
     text-align: center;
+    padding: 0 30px;
 }
 
 .arrow-design::after {
@@ -1119,9 +1120,9 @@ header button {
 
     .heading {
         margin-top: 50px;
-        font-size: 3rem;
-        width: 80%;
-        margin-left: 30px;
+        font-size: 2.5rem;
+        width: 100%;
+        margin-left: auto;
     }
 
     #products .card {
@@ -1214,6 +1215,13 @@ header button {
         z-index: 2;
         right: 14px;
     }
+
+    .arrow-design {
+        width: auto;
+        padding: 0px 35px;
+        padding-top: 9px;
+        margin-top: -8px;
+    }
 }
 
 
@@ -1257,8 +1265,15 @@ header button {
     .heading {
         margin-top: 50px;
         font-size: 3rem;
-        width: 80%;
-        margin-left: 30px;
+        width: 100%;
+        margin-left: auto;
+    }
+
+    .arrow-design {
+        width: auto;
+        padding: 0px 35px;
+        padding-top: 7px;
+        margin-top: -8px;
     }
 
     #products .card {
