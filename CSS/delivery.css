@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    font-size: 10px;
+}
+
+body {
+    background-color: #f8f9fa;
+}
+
+/* AchiverIT Logo Text  */
+
+.logo {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #5353FF;
+}
+
+.logo span {
+    color: #FF5F24;
+}
+
+
+/* Navbar Section Styling Starts */
+
+.navbar {
+    background-color: white;
+    font-size: 1.5rem;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+
+.navbar .fa-basket-shopping {
+    font-size: 2.5rem;
+    color: #FF7800;
+}
+
+
+.navbar .logo {
+    width: 27vw;
+    text-align: center;
+}
+
+.navbar ul {
+    font-size: 1.8rem;
+    color: #666484;
+    font-weight: 500;
+}
+
+.navbar ul li {
+    margin: 10px;
+}
+
+.navbar .navbar-logo {
+    width: 19vw;
+}
+
+.navbar .navbar-logo .fa-solid {
+    background-color: #EEEEEE;
+    padding: 13px;
+    border-radius: 5px;
+    font-size: 2rem;
+    margin: 1px;
+    cursor: pointer;
+}
+
+.navbar .navbar-logo .fa-solid:hover {
+    background-color: #FF7800;
+    color: white;
+}
+
+.navbar button {
+    border: none;
+    border-radius: 5px;
+}
+
+.navbar .fa-bars {
+    font-size: 2rem;
+    color: rgba(0, 0, 0, 0.794);
+    font-weight: bold;
+}
+
+.navbar button {
+    margin-right: 15px;
+}
+
+/* Glocey Store Style  */
+
+[src ="../Images/org2.png"] {
+    width: 90%;
+    height: 110%;
+    border-radius: 5px;
+}
+
+#delivery h1 {
+    font-size: 3rem;
+    font-weight: bolder;
+    color: #FF7804;
+    margin-bottom: 10px;
+}
+
+#delivery h2 {
+    font-size: 2.2rem;
+    font-weight: bolder;
+    color: #72b904;
+    margin-bottom: 10px;
+}
+
+#delivery span {
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 32px;
+    color: #8D7A72;
+    margin-bottom: 35px;
+    text-align: justify;
+}
+
+#delivery {
+    padding: 3% 0;
+    background-color: #f8f9fa;
+}
+
+#delivery .row {
+    margin: 0 8%;
+}
+
+.row .col {
+    width: 47%;
+}
+
+#delivery a {
+    padding: 8px 30px;
+    background-color: transparent;
+    text-decoration: none;
+    font-size: 1.8rem;
+    color: #73445E;
+    font-weight: 500;
+    padding-bottom: 12px;
+    border: 3px solid #73445E;
+    border-radius: 5px;
+}
+
+#delivery a:hover {
+    background-color: orangered;
+    color: white;
+    border: none;
+}
+
+@media only screen and (max-width:600px){
+    #delivery .row {
+        text-align: center;
+    }
+    [src ="../Images/org2.png"] {
+        width: 100%;
+    }
+
+    #delivery .col {
+        margin: 50px 0;
+    }
+
+    #delivery h1 {
+        font-size: 2.8rem;
+    }
+    
+    #delivery h2 {
+        font-size: 2.1rem;
+    }
+    
+    #delivery span {
+        font-size: 1.4rem;
+    }
+}
+
+@media only screen and (min-width:767px) and (max-width:991px) {
+    #delivery .row {
+        text-align: center;
+    }
+    [src ="../Images/org2.png"] {
+        width: 100%;
+    }
+
+    #delivery .col {
+        margin: 70px 0;
+    }
+
+}

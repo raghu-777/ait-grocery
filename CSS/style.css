@@ -1,0 +1,1299 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    font-size: 10px;
+}
+
+body {
+    background-color: #f8f9fa;
+    overflow-x: hidden;
+}
+
+body::-webkit-scrollbar {
+    width: 10px;
+}
+
+#cartPage::-webkit-scrollbar {
+    width: 5px;
+}
+
+body::-webkit-scrollbar-track, #cartPage::-webkit-scrollbar-track {
+    background: white;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: rgb(85, 0, 255);
+}
+
+#cartPage::-webkit-scrollbar-thumb {
+    background: #130F40;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+    background: red;
+}
+
+/* styling Code Multiple Elements */
+
+/* Heading(Sharpe Edge Style) */
+
+.fa-indian-rupee-sign {
+    font-size: 1.8rem;
+}
+
+.heading {
+    display: flex;
+    justify-content: center;
+}
+
+.arrow-design {
+    width: 240px;
+    height: 60px;
+    position: relative;
+    background: #FF5F24;
+    color: white;
+    text-align: center;
+}
+
+.arrow-design::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-left: 17px solid #f8f9fa;
+    border-top: 31px solid transparent;
+    border-bottom: 30px solid transparent;
+}
+
+.arrow-design::before {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 0;
+    height: 0;
+    border-right: 16px solid #f8f9fa;
+    border-top: 31px solid transparent;
+    border-bottom: 30px solid transparent;
+}
+
+/* AchiverIT Logo Text  */
+
+.logo {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #5353FF;
+}
+
+.logo span {
+    color: #FF5F24;
+}
+
+
+/* Navbar Section Styling Starts */
+
+header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: white;
+    font-size: 1.5rem;
+    padding: 10px 0;
+    z-index: 1;
+    box-shadow: 2px 2px 5px 5px rgba(0, 0, 0, 0.15);
+}
+
+
+header .fa-basket-shopping {
+    font-size: 2.5rem;
+    color: #FF7800;
+}
+
+
+header .logo {
+    width: 27vw;
+    text-align: center;
+}
+
+.navbar ul {
+    font-size: 1.8rem;
+    color: #666484;
+    font-weight: 500;
+}
+
+.navbar ul li {
+    margin: 10px;
+}
+
+header .navbar-logo {
+    width: 19vw;
+    position: absolute;
+    right: 10px;
+    top: auto;
+}
+
+header .navbar-logo .fa-solid {
+    background-color: #EEEEEE;
+    padding: 13px;
+    border-radius: 5px;
+    font-size: 2rem;
+    margin: 1px;
+    cursor: pointer;
+}
+
+header .navbar-logo .fa-solid:hover {
+    background-color: #FF7800;
+    color: white;
+}
+
+header button {
+    border: none;
+    border-radius: 5px;
+}
+
+ header .fa-bars {
+    font-size: 2rem;
+    color: rgba(0, 0, 0, 0.794);
+    font-weight: bold;
+}
+
+header button {
+    margin-right: 15px;
+}
+
+.navbar-logo .btn span {
+    font-size: 19px;
+    border-radius: 11px;
+    text-align: center;
+    padding: 3px 10px;
+    top: 3px;
+    right: -23px;
+    cursor: default;
+}
+
+.navbar a {
+    color: #6E6B89 !important;
+}
+
+.navbar a:hover{
+    color: red !important;
+}
+
+
+/* Navbar Section Styling Ends */
+
+/* Banner Section Styling Starts */
+
+#banner {
+    background: url(../Images/banner-bg.webp);
+    width: 100%;
+    background-position: 100% 100%;
+    background-size: cover;
+    height: 350px;
+    text-align: center;
+}
+
+#banner div {
+    width: 41%;
+}
+
+#banner h1 {
+    font-size: 3rem;
+    font-weight: bolder;
+    color: #130F40;
+    margin: 20px 0;
+}
+
+#banner h1 span {
+    color: #FF7804;
+}
+
+#banner p {
+    font-size: 1.8rem;
+    font-weight: 500;
+    line-height: 32px;
+    color: #8D7A72;
+    margin-bottom: 35px;
+}
+
+#banner div a {
+    padding: 8px 30px;
+    background-color: transparent;
+    text-decoration: none;
+    font-size: 1.8rem;
+    color: #73445E;
+    font-weight: 500;
+    margin-top: 10px;
+    padding-bottom: 12px;
+    border: 3px solid #73445E;
+    border-radius: 5px;
+}
+
+#banner div a:hover {
+    background-color: orangered;
+    color: white;
+    border: none;
+}
+
+
+/* Banner Section Styling Ends */
+
+
+/* Feature Section Styling */
+
+
+#features,
+#products,
+#categories,
+#reviews,
+#blog {
+    padding: 3% 0;
+    font-size: 3.5rem;
+    font-weight: 600;
+    color: #130F40;
+}
+
+#features .row,
+#products .row,
+#reviews .row {
+    margin: 0 10%;
+}
+
+#features .card,
+#products .card,
+#categories .card,
+#reviews .card {
+    text-align: center;
+    height: auto;
+    padding: 20px 0;
+    width: 25vw;
+    border: 10px solid transparent;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 2px 3px 5px #aaaaaa, inset 0 0 0 1px rgb(173, 164, 164);
+}
+
+
+#features .col-lg-4 :hover {
+    border-color: rgba(0, 0, 0, 0.74);
+    border-width: 3px;
+}
+
+#products .col-lg-4 :hover {
+    border-color: rgba(0, 0, 0, 0.74);
+    border-width: 3px;
+}
+
+#categories .col-lg-3 :hover {
+    border-color: rgba(0, 0, 0, 0.74);
+    border-width: 3px;
+}
+
+#reviews .col-lg-4 :hover {
+    border-color: rgba(0, 0, 0, 0.74);
+    border-width: 3px;
+}
+
+
+#features [src *='img-1'] {
+    width: 200px;
+    margin: 20px auto;
+}
+
+#features [src *='img-2'] {
+    width: 240px;
+    margin: 20px auto;
+}
+
+#features [src *='img-3'] {
+    width: 213px;
+    margin: 20px auto;
+}
+
+#features .card-title,
+#products .card-title,
+#categories .card-title,
+#reviews .card-title,
+#blog .card-title,
+#loginForm h1 {
+    font-size: 2.5rem;
+    color: #130F40;
+    font-weight: bold;
+}
+
+#features .card-text,
+#products .card-text,
+#categories .card-text,
+#reviews .card-text,
+#blog .card-text {
+    font-size: 1.6rem;
+    color: #8D7A72;
+    font-weight: 500;
+    width: 100%;
+}
+
+.card a,
+.card button,
+#Login {
+    padding: 8px 30px;
+    background-color: transparent;
+    text-decoration: none;
+    font-size: 1.8rem;
+    color: #73445E;
+    font-weight: 500;
+    margin-top: 10px;
+    padding-bottom: 12px;
+    border: 3px solid #73445E;
+    border-radius: 5px;
+}
+
+.card a:hover {
+    background-color: orangered;
+    color: white;
+    border: none;
+}
+
+/* Products Section Stylings */
+
+#products .col :hover {
+    border-color: rgba(0, 0, 0, 0.74);
+    border-width: 3px;
+}
+
+.card button:hover {
+    background-color: orangered;
+    color: white;
+    border: none;
+}
+
+#products [src *='product'] {
+    width: 200px;
+    margin: 20px auto;
+}
+
+#products .card-text {
+    font-size: 2rem;
+    margin: 0;
+}
+
+.card-rating {
+    margin-top: -10px;
+}
+
+.card-rating .fa-solid {
+    font-size: 2rem;
+    color: #FF7800;
+}
+
+/* Categories Section Styling */
+
+#categories .row,
+#blog .row {
+    margin: 0 7%;
+}
+
+#blog .row {
+    margin: 0 3% 0 8%;
+}
+
+#categories .col {
+    width: 25%;
+}
+
+#categories .card {
+    padding: 10px 0 25px 0;
+    width: 20vw;
+}
+
+#categories .col :hover {
+    border-color: rgba(0, 0, 0, 0.74);
+    border-width: 3px;
+}
+
+#categories [src *='cat'] {
+    width: 200px;
+    margin: 20px auto;
+}
+
+/* Reviews Styling  */
+
+#reviews .card {
+    padding: 10px 0;
+}
+
+#reviews .col :hover {
+    border-color: rgba(0, 0, 0, 0.74);
+    border-width: 3px;
+}
+
+#reviews [src *='pic'] {
+    width: 120px;
+    margin: 20px auto;
+    border-radius: 50%;
+}
+
+/* Blog Styling */
+
+
+#blog .card {
+    height: auto;
+    width: 25vw;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 2px 3px 5px #aaaaaa;
+    padding-bottom: 20px;
+}
+
+#blog [src *='blog'] {
+    width: auto;
+    height: 220px;
+}
+
+
+#blog .card-title {
+    margin-top: 20px;
+}
+
+#blog .card-text {
+    margin-top: 10px;
+}
+
+#blog .fa-solid {
+    font-size: 1.5rem;
+    color: #FF5F24;
+}
+
+#blog .date {
+    display: flex;
+    justify-content: space-between;
+    color: #8D7A72;
+    font-size: 1.5rem;
+    font-weight: 500;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.357);
+    padding-bottom: 15px;
+}
+
+/* Footer Section Styling */
+
+#footer {
+    padding: 1% 0;
+}
+
+#footer .row {
+    margin: 0 8%;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.6);
+}
+
+#footer .footer-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-body span {
+    font-size: 1.6rem;
+    color: #8D7A72;
+    font-weight: 500;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.footer-body a {
+    font-size: 1.6rem;
+    color: #8D7A72;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.logo span {
+    color: #FF5F24;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.move-text {
+    transition: transform 0.4s ease;
+}
+
+.move-text:hover {
+    transform: translateX(15px);
+}
+
+#footer .fa-brands {
+    color: #130F40;
+    background-color: #f4cdcd;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 1.9rem;
+    margin: 5px;
+    cursor: pointer;
+    width: 40px;
+    text-align: center;
+    transition: all .5s;
+    transition: transform 250ms;
+}
+
+#footer .fa-brands:hover {
+    background-color: #FF7800;
+    color: white;
+    transform: translateY(10px);
+}
+
+#footer h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #5353FF;
+    margin: 35px 0 15px 0;
+}
+
+#footer .fa-solid {
+    color: #FF7800;
+    font-size: 1.8rem;
+    padding: 2px;
+    margin-right: 10px;
+}
+
+#footer ul {
+    padding-left: 0;
+}
+
+#footer ul li {
+    padding: 10px 0;
+    cursor: pointer;
+
+}
+
+.social-media ul li {
+    padding: 0;
+}
+
+.footer-body input {
+    width: 250px;
+    height: 45px;
+    border: 2px solid rgba(0, 0, 0, 0.484);
+    border-radius: 5px;
+    background-color: #EEEEEE;
+    font-size: 1.8rem;
+    padding-left: 5px;
+}
+
+.footer-body button {
+    padding: 4px 30px;
+    width: 140px;
+    height: 45px;
+    background-color: transparent;
+    text-decoration: none;
+    font-size: 1.8rem;
+    color: #73445E;
+    font-weight: 500;
+    margin-top: 10px;
+    padding-bottom: 12px;
+    border: 3px solid #73445E;
+    border-radius: 5px;
+}
+
+.footer-body button:hover {
+    background-color: orangered;
+    color: white;
+    border: none;
+}
+
+.footer-body img {
+    width: 245px;
+    height: 35px;
+}
+
+#footer h3 {
+    font-size: 2rem;
+    font-weight: 500;
+    text-align: center;
+    margin: 20px 0 40px 0;
+    color: #73445E;
+}
+
+#footer h3 span {
+    color: #FF7800;
+}
+
+#footer .fa-basket-shopping {
+    font-size: 2.3rem;
+}
+
+/* Registraion Form Form Styling */
+
+#registraion-form .modal-body, #resetPassword .modal-body {
+    display: flex;
+    flex-direction: column;
+}
+
+#registraion-form .modal-body label, #resetPassword .modal-body label {
+    font-size: 18px;
+    padding: 0px 10px;
+}
+
+#registraion-form .modal-body input, #resetPassword .modal-body input {
+    margin: 10px;
+    padding: 10px;
+    width: 95%;
+    border-radius: 5px;
+    border: 1px solid rgb(134, 126, 117);
+    font-size: 1.7rem;
+}
+
+#registraion-form input {
+    font-size: 1.5rem;
+}
+
+#registraion-form .modal-header {
+    background: #e5ecf4;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#registraion-form .modal-header button, #resetPassword .modal-body button {
+    position: absolute;
+    top: 20px;
+    right: 16px;
+    text-align: center;
+    cursor: pointer;
+    background: #FF7804;
+    border-radius: 50%;
+    padding: 4px 5px 5px 5px;
+    width: 25px;
+    height: 25px;
+    border: none;
+}
+
+#resetPassword .modal-header button {
+    position: absolute;
+    top: 15px;
+    right: 12px;
+    text-align: center;
+    cursor: pointer;
+    background: #FF7804;
+    border-radius: 50%;
+    padding: 4px 5px 5px 5px;
+    width: 25px;
+    height: 25px;
+    border: none;
+}
+
+#registraion-form .modal-header .fa-xmark, #resetPassword .modal-header .fa-xmark {
+    font-size: 1.7rem;
+    color: white;
+}
+
+#registraion-form h5, #resetPassword h5 {
+    font-size: 2.5rem;
+    color: #130F40;
+    font-weight: bold;
+}
+
+#resetPassword h5 {
+    margin-left: 145px;
+}
+
+
+#registraion-form .modal-footer button, #resetPassword .modal-footer button {
+    color: #fff;
+    background: orangered;
+    font-size: 2rem;
+    border: none;
+    width: 99%;
+    padding: 5px 0px;
+}
+
+#registraion-form .modal-footer button:hover {
+    background: #1badd9;
+}
+
+#resetPassword .modal-footer button:hover {
+    background: #1badd9;
+}
+
+#btn, #reset-email {
+    display: none;
+}
+
+
+/* Login Form Styling */
+
+#loginForm {
+    position: fixed;
+    top: 120px;
+    right: -100%;
+    transform: scale(1.2);
+    width: 23%;
+    padding: 20px 30px 20px 15px;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px 5px rgba(0, 0, 0, 0.15);
+    transition: .5s;
+    display: none;
+}
+
+#loginForm.login {
+    right: 37px;
+}
+
+#loginForm form {
+    width: 100%;
+    text-align: center;
+}
+
+#loginForm input {
+    width: 106%;
+    height: 40px;
+    border: 2px solid rgba(0, 0, 0, 0.484);
+    border-radius: 5px;
+    background-color: #EEEEEE;
+    font-size: 1.5rem;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+#loginForm span {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+#verifyEmail,
+#verifyPassword {
+    text-align: left;
+}
+
+#emailCheckError,
+#pwdCheckError {
+    color: red;
+}
+
+#pwdReset,
+#registerPage {
+    border: none;
+    text-decoration: underline;
+    color: orange;
+    font-size: 1.3rem;
+    font-weight: 500;
+    background: none;
+    margin-left: 5px;
+}
+
+#login-form-bottom {
+    line-height: 23px;
+    color: #8D7A72;
+}
+
+#Login {
+    padding: 0px 15px;
+    height: 33px;
+    font-size: 1.5rem;
+    border: 2px solid #73445E;
+    border-radius: 5px;
+}
+
+#Login:hover {
+    background-color: orangered;
+    color: white;
+    border: none;
+}
+
+
+#loginForm .close-btn, #cartPage .close-cart-btn {
+    position: absolute;
+    top: 4%;
+    right: 3%;
+    text-align: center;
+    cursor: pointer;
+    background: #FF7804;
+    border-radius: 50%;
+    padding: 4px 5px 5px 5px;
+    width: 25px;
+    height: 25px;
+}
+
+#loginForm .fa-xmark, #cartPage .close-cart-btn {
+    font-size: 1.7rem;
+    color: white;
+}
+
+/* Cart Page Design starts */
+
+#cartPage {
+    position: fixed;
+    top: 93px;
+    right: 10px;
+    width: 30%;
+    transform: scale(1);
+    max-height: 75vh;
+    padding: 20px 5px;
+    overflow-y: auto;
+    padding-top: 30px;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px 5px rgba(0, 0, 0, 0.15);
+    transition: top 0.5s ease-in-out;
+    display: none;
+}
+
+#cartPage .cart-item {
+    display: grid;
+    grid-template-columns: 3fr 3fr 3fr 1fr;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.666);
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#result {
+    display: none;
+    right: -22px;
+    top: 3px;
+}
+
+.close-cart-btn {
+    top: 2%;
+    right: 2%;
+}
+
+.cart-item h6{
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #130F40;
+}
+
+.title-price {
+    padding-top: 25px;
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: #8D7A72;
+    text-align: left;
+}
+
+.title-price p{
+    margin-left: 25px;
+}
+
+.title-price .fa-indian-rupee-sign {
+    font-size: 1.2rem;
+}
+
+.quantity {
+    text-align: left;
+    padding-top: 15px;
+}
+
+.quantity span {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: #000;
+    margin-left: 25px;
+}
+
+#cartPage img {
+    width: 115px;
+    height: auto;
+}
+
+#cartPage .cancel {
+    padding-top: 15px;
+}
+
+#cartPage .fa-trash {
+    font-size: 1.7rem;
+    color: #73445E;
+    cursor: pointer;
+}
+
+#cartPage .close-cart-btn {
+    padding: 0 5px 5px 5px;
+    top: 10px;
+    right: 10px;
+}
+
+.cart-footer {
+    text-align: center;
+}
+
+.subtotal {
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: #8D7A72;
+    margin-bottom: 15px;
+}
+
+.empty-msg {
+    text-align: center;
+    font-size: 2.5rem;
+    padding: 10px;
+    padding-top: 0;
+    font-weight: bold;
+    color: #130F40;
+}
+
+#checkout {
+    padding: 5px 20px;
+    width: 95%;
+    margin-left: auto;
+    background-color: transparent;
+    font-size: 1.7rem;
+    font-weight: 500;
+    color: #73445E;
+    border: 2px solid #73445E;
+    border-radius: 5px
+
+}
+
+#checkout:hover {
+    background-color: orangered;
+    color: white;
+    border: 2px solid #73445E;
+}
+/* Cart Page Design Ends */
+
+/* Form Validation Stylings */
+
+
+#name,
+#email,
+#number,
+#password,
+#confirmPassword,
+#verifyEmail,
+#verifyPassword {
+    position: relative;
+    margin: 15px 0;
+
+}
+
+#password span {
+    font-size: 10px;
+}
+
+#pwdNotContaines,
+#pwdContaines {
+    display: flex;
+    flex-direction: column;
+    font-size: 11px;
+}
+
+#pwdRules {
+    display: flex;
+    flex-direction: column;
+    color: red;
+}
+
+#pwdRules span {
+    display: none;
+}
+
+#pwdRules .fa-check {
+    font-size: 13px;
+    margin-right: 5px;
+}
+
+#pwdRules .fa-xmark {
+    color: red;
+    font-size: 13px;
+    margin-right: 5px;
+}
+
+.fa-circle-exclamation {
+    position: absolute;
+    right: 23px;
+    top: 50px;
+    color: red;
+    font-size: 20px;
+}
+
+.fa-circle-check {
+    position: absolute;
+    right: 23px;
+    top: 50px;
+    color: green;
+    font-size: 20px;
+}
+
+.fa-eye {
+    position: absolute;
+    right: 50px;
+    top: 49px;
+    color: cornflowerblue;
+    font-size: 20px;
+    cursor: pointer;
+    visibility: hidden;
+}
+
+.fa-eye-slash {
+    position: absolute;
+    right: 50px;
+    top: 49px;
+    color: cornflowerblue;
+    font-size: 20px;
+    cursor: pointer;
+    visibility: hidden;
+}
+
+#nameError,
+#emailError,
+#pwdError,
+#pwdRules,
+#pwdConfirmError {
+    margin: 0;
+    margin-left: 10px;
+}
+
+#verifyBtn:hover {
+    color: red;
+    background-color: cornflowerblue;
+}
+
+#btn:hover {
+    color: red;
+    background-color: cornflowerblue;
+}
+
+#verifyEmailBtn:hover {
+    color: red;
+    background-color: cornflowerblue;
+}
+
+#resetPasswordBtn:hover {
+    color: red;
+    background-color: cornflowerblue;
+}
+
+#registraion-form span, #emailResetError {
+    color: red;
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.signButtons {
+    margin: 20px;
+}
+
+#emailResetError {
+    margin-left: 10px;
+}
+
+
+/* Media Queries */
+
+@media only screen and (max-width:600px) {
+    header {
+        padding: 0;
+    }
+    #banner div {
+        width: 100%;
+    }
+
+    #banner {
+        background-position: top center;
+        height: auto;
+        padding: 50px 0;
+    }
+
+    #features .row,
+    #products .row,
+    #reviews .row,
+    #categories .row,
+    #blog .row {
+        margin: 0 5%;
+    }
+
+    #features .card {
+        width: 85vw;
+    }
+
+    .heading {
+        margin-top: 50px;
+        font-size: 3rem;
+        width: 80%;
+        margin-left: 30px;
+    }
+
+    #products .card {
+        width: 85vw;
+    }
+
+    #categories .card {
+        width: 85vw;
+    }
+
+    #categories .col {
+        width: 100%;
+    }
+
+    #reviews .card {
+        width: 85vw;
+    }
+
+    #blog .card {
+        width: 85vw;
+    }
+
+    .navbar ul li {
+        margin: 5px;
+    }
+
+    header button {
+        margin-right: 5px;
+    }
+ 
+    header .navbar-logo {
+        width: auto;
+        display: flex;
+        position: absolute;
+        right: 55px;
+        top: 9px;
+    }
+
+    header .navbar-logo .fa-solid {
+        padding: 8px;
+        font-size: 1.8rem;
+    }
+
+    #footer img {
+        margin-bottom: 10%;
+    }
+
+    #footer h3 {
+        margin: 50px 0 50px 0;
+    }
+
+    #footer .row {
+        margin: 50px 20px 0 20px;
+    }
+    #loginForm {
+        width: 75%;
+        top: 40px;
+        right: 46px;
+        z-index: 2;
+    }
+    #registraion-form .modal-header button, #resetPassword .modal-header button {
+        top: 10px;
+        right: 11px;
+    }
+    
+    #registraion-form .modal-header, #resetPassword .modal-header {
+        padding: 7px;
+    }
+
+    #registraion-form h5, #resetPassword h5 {
+        font-size: 20px;
+    }
+
+    #resetPassword h5 {
+        margin-left: 110px;
+    }
+
+    #registraion-form .modal-body label, #resetPassword .modal-body label {
+        font-size: 17px;
+    }
+
+    #registraion-form .modal-body input, #resetPassword .modal-body input {
+        margin: 7px;
+        padding: 9px;
+    }
+    #cartPage {
+        max-height: 74vh;
+        width: 93%;
+        top: 5px;
+        z-index: 2;
+        right: 14px;
+    }
+}
+
+
+@media only screen and (min-width:767px) and (max-width:991px) {
+    #banner div {
+        width: 75%;
+    }
+
+    #banner {
+        height: 28vh;
+    }
+
+    .navbar ul {
+        margin-left: 10px;
+    }
+
+    .navbar ul li {
+        margin: 5px;
+    }
+
+    header .navbar-logo {
+        width: auto;
+        display: flex;
+        position: absolute;
+        right: 60px;
+        top: 0;
+    }
+
+    #features .row,
+    #products .row,
+    #reviews .row,
+    #categories .row,
+    #blog .row {
+        margin: 0 1%;
+    }
+
+    #features .card {
+        width: 44vw;
+    }
+
+    .heading {
+        margin-top: 50px;
+        font-size: 3rem;
+        width: 80%;
+        margin-left: 30px;
+    }
+
+    #products .card {
+        width: 31vw;
+    }
+
+    #categories {
+        margin: 0%;
+    }
+
+    #categories .card {
+        width: 38vw;
+        margin-left: 30px;
+    }
+
+    #reviews .card {
+        width: 46vw;
+    }
+
+    #blog .card {
+        width: 48vw;
+    }
+    #loginForm {
+        width: 37%;
+        top: 105px;
+        z-index: 2;
+    }
+    #loginForm.login {
+        right: 44px;
+    }
+    #cartPage {
+        max-height: 34vh;
+        width: 56%;
+        top: 76px;
+        z-index: 2;
+        right: 14px;
+    }
+}
