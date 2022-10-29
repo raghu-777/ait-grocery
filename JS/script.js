@@ -84,6 +84,14 @@ closeCartBtn.addEventListener('click', closeCart);
 
 // Ending of Opening and Closing Cart Block 
 
+//Object to Store User Entered Data Tempararily
+let userDetails = new Object();
+userDetails.Name = "";
+userDetails.Email = "";
+userDetails.Password = "";
+
+
+//Cart Logic
 
 class CartItem {
     constructor(name, img, price) {
@@ -145,11 +153,6 @@ addToCartBtns.forEach((btn) => {
 })
 
 function addItemFunction(e) {
-    if(userDetails.Email == "") {
-        alert('Login Before Purchase');
-        document.querySelector('#loginForm').style.display = 'block';
-    } 
-    else {
         const id = e.target.parentElement.parentElement.getAttribute('data-id');
         const img = e.target.parentElement.previousElementSibling.src;
         const name = e.target.previousElementSibling.previousElementSibling.previousElementSibling.textContent;
@@ -158,8 +161,6 @@ function addItemFunction(e) {
         price = price.replace('/-', '');
         const item = new CartItem(name, img, price)
         LocalCart.addItemToLocalCart(id, item)
-        console.log(price)
-    }
 }
 
 function updateCartUI() {
@@ -246,13 +247,6 @@ const pwdConfirmShowButton = document.getElementById('pwdConfirmShow');
 const submitButton = document.getElementById('btn');
 
 
-//Object to Store User Entered Data Tempararily
-let userDetails = new Object();
-userDetails.Name = "";
-userDetails.Email = "";
-userDetails.Password = "";
-
-
 //Name Field Check Function
 
 function nameCheck() {
@@ -319,22 +313,26 @@ const passwordButton = document.querySelectorAll("#password #pwdShow .fa-solid")
 
 const passwordContains = document.querySelectorAll('#password #pwdRules span');
 
+function passwordError() {
+    pwdErrorLogo.innerHTML = "<i class='fa-solid fa-circle-exclamation'></i>";
+    document.getElementById('pwdError').style.color = "red";
+    Password.style.border = "2px solid red";
+    submitButton.disabled = true;
+    submitButton.style.backgroundColor = "#b68978";
+    submitButton.style.color = "#dba9a9";
+    confirmPassword.disabled = true;
+}
+
 
 function pwdCheck() {
     let pwdValue = Password.value;
     pwdValue = pwdValue.trim();
     if (pwdValue.length == 0) {
-        pwdErrorLogo.innerHTML = "<i class='fa-solid fa-circle-exclamation'></i>";
+        passwordError();
         passwordButton[0].style.visibility = "hidden";
         document.getElementById('pwdError').innerHTML = "Enter Password";
-        document.getElementById('pwdError').style.color = "red";
         document.getElementById('pwdRules').style.display = "none";
-        Password.style.border = "2px solid red";
-        submitButton.disabled = true;
-        submitButton.style.backgroundColor = "#b68978";
-        submitButton.style.color = "#dba9a9";
         confirmPassword.style.border = "2px solid red";
-        confirmPassword.disabled = true;
         return false;
     }
 
@@ -355,26 +353,14 @@ function pwdCheck() {
 
 
     if (!pwdValue.match(/^[\w\@\#\$\%\&\_]{8,}\s{0}$/)) {
-        pwdErrorLogo.innerHTML = "<i class='fa-solid fa-circle-exclamation'></i>";
+        passwordError();
         document.getElementById('pwdError').innerHTML = "Password Not Valid";
         passwordButton[0].style.visibility = "visible";
-        document.getElementById('pwdError').style.color = "red";
-        Password.style.border = "2px solid red";
-        submitButton.disabled = true;
-        submitButton.style.backgroundColor = "#b68978";
-        submitButton.style.color = "#dba9a9";
-        confirmPassword.disabled = true;
         return false;
     }
 
     if (pwdValue.match(/^[^A-Z]+$/)) {
-        pwdErrorLogo.innerHTML = "<i class='fa-solid fa-circle-exclamation'></i>";
-        document.getElementById('pwdError').style.color = "red";
-        Password.style.border = "2px solid red";
-        submitButton.disabled = true;
-        submitButton.style.backgroundColor = "#b68978";
-        submitButton.style.color = "#dba9a9";
-        confirmPassword.disabled = true;
+        passwordError();
         return false;
 
     } else {
@@ -382,13 +368,7 @@ function pwdCheck() {
     }
 
     if (pwdValue.match(/^[^a-z]+$/)) {
-        pwdErrorLogo.innerHTML = "<i class='fa-solid fa-circle-exclamation'></i>";
-        document.getElementById('pwdError').style.color = "red";
-        Password.style.border = "2px solid red";
-        submitButton.disabled = true;
-        submitButton.style.backgroundColor = "#b68978";
-        submitButton.style.color = "#dba9a9";
-        confirmPassword.disabled = true;
+        passwordError();
         return false;
 
     } else {
@@ -396,13 +376,7 @@ function pwdCheck() {
     }
 
     if (pwdValue.match(/^[^0-9]+$/)) {
-        pwdErrorLogo.innerHTML = "<i class='fa-solid fa-circle-exclamation'></i>";
-        document.getElementById('pwdError').style.color = "red";
-        Password.style.border = "2px solid red";
-        submitButton.disabled = true;
-        submitButton.style.backgroundColor = "#b68978";
-        submitButton.style.color = "#dba9a9";
-        confirmPassword.disabled = true;
+        passwordError();
         return false;
 
     } else {
@@ -410,13 +384,7 @@ function pwdCheck() {
     }
 
     if (pwdValue.match(/^[^\@\#\$\%\&|_]+$/)) {
-        pwdErrorLogo.innerHTML = "<i class='fa-solid fa-circle-exclamation'></i>";
-        document.getElementById('pwdError').style.color = "red";
-        Password.style.border = "2px solid red";
-        submitButton.disabled = true;
-        submitButton.style.backgroundColor = "#b68978";
-        submitButton.style.color = "#dba9a9";
-        confirmPassword.disabled = true;
+        passwordError();
         return false;
 
     } else {
@@ -424,13 +392,7 @@ function pwdCheck() {
     }
 
     if (pwdValue.match(/^[^\s]{0}$/)) {
-        pwdErrorLogo.innerHTML = "<i class='fa-solid fa-circle-exclamation'></i>";
-        document.getElementById('pwdError').style.color = "red";
-        Password.style.border = "2px solid red";
-        submitButton.disabled = true;
-        submitButton.style.backgroundColor = "#b68978";
-        submitButton.style.color = "#dba9a9";
-        confirmPassword.disabled = true;
+        passwordError();
         return false;
 
     } else {
@@ -672,6 +634,8 @@ checkButton.addEventListener('click', (e) => {
     if (userDetails.Email == checkEmail.value && userDetails.Password == checkPwd.value) {
         alert("Login Successful");
         alert("Purchase Items Now")
+        document.getElementById('Login').innerHTML = 'Login SuccessFull';
+        document.getElementById('Login').disabled = "true";
         checkEmail.value = "";
         checkPwd.value = "";
         emailError.innerHTML = "";
@@ -680,6 +644,7 @@ checkButton.addEventListener('click', (e) => {
         return true;
     }
 })
+
 
 
 //Reset Password 
