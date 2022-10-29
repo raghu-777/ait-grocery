@@ -1,19 +1,25 @@
+
 // Opening and CLosing Login Form 
 
 
 const openFormBtn = document.querySelector('#show-login');
+const pwdReset = document.getElementById('pwdReset');
+const closeFormBtn = document.querySelector('.close-btn'); //Closing Button on Login Page
+const openRegPage = document.querySelector('#registerPage'); //Disappear Login Page When Open Registration Page
+const closeRegForm = document.querySelector('.form-header button');
+const closeResetForm = document.querySelector('.reset-header button');
 
 function openForm() {
     document.querySelector('#loginForm').style.display = 'block';
     document.getElementById('cartPage').style.display = "none";
-    document.querySelector("#loginForm").classList.add('login');
+    
 }
-
 openFormBtn.addEventListener('click', openForm);
 
-const closeFormBtn = document.querySelector('.close-btn'); //Closing Button on Login Page
-const openRegPage = document.querySelector('#registerPage'); //Disappear Login Page When Open Registration Page
-const pwdReset = document.getElementById('pwdReset');
+
+closeRegForm.addEventListener('click',() => {
+    document.getElementById('registraion-form').style.display = "none";
+})
 
 
 function closeForm() {
@@ -28,19 +34,30 @@ function closeForm() {
 
 closeFormBtn.addEventListener('click', closeForm);
 openRegPage.addEventListener('click', () => {
+    document.getElementById('registraion-form').style.display = "block";
+    document.getElementById('resetPassword').style.display = 'none';
     document.querySelector('#loginForm').style.display = 'none';
     document.getElementById('btn').style.display = "block";
     document.getElementById('name').style.display = "block";
     document.getElementById('email').style.display = "block";
     document.getElementById('reset-email').style.display = "none";
-    document.getElementById('exampleModalLabel').innerHTML = "REGISTRATION FORM";
+    document.querySelector('#registraion-form h5').innerHTML = "REGISTRATION FORM";
     checkEmail.value = "";
     checkPwd.value = "";
     emailError.innerHTML = "";
     pwdError.innerHTML = "";
     clearSignUpForm();
 });
-pwdReset.addEventListener('click', closeForm);
+
+pwdReset.addEventListener('click', () => {
+    document.getElementById('resetPassword').style.display = 'block';
+    document.querySelector('#loginForm').style.display = 'none';
+    document.getElementById('registraion-form').style.display = "none";
+});
+
+closeResetForm.addEventListener('click', () => {
+    document.getElementById('resetPassword').style.display = 'none';
+})
 
 
 //Ending Code of Opening and CLosing Login Form
@@ -128,15 +145,21 @@ addToCartBtns.forEach((btn) => {
 })
 
 function addItemFunction(e) {
-    const id = e.target.parentElement.parentElement.getAttribute('data-id');
-    const img = e.target.parentElement.previousElementSibling.src;
-    const name = e.target.previousElementSibling.previousElementSibling.previousElementSibling.textContent;
-    let price = e.target.previousElementSibling.previousElementSibling.textContent;
-    price = price.replace('4.99/- -  ', '');
-    price = price.replace('/-', '');
-    const item = new CartItem(name, img, price)
-    LocalCart.addItemToLocalCart(id, item)
-    console.log(price)
+    if(userDetails.Email == "") {
+        alert('Login Before Purchase');
+        document.querySelector('#loginForm').style.display = 'block';
+    } 
+    else {
+        const id = e.target.parentElement.parentElement.getAttribute('data-id');
+        const img = e.target.parentElement.previousElementSibling.src;
+        const name = e.target.previousElementSibling.previousElementSibling.previousElementSibling.textContent;
+        let price = e.target.previousElementSibling.previousElementSibling.textContent;
+        price = price.replace('4.99/- -  ', '');
+        price = price.replace('/-', '');
+        const item = new CartItem(name, img, price)
+        LocalCart.addItemToLocalCart(id, item)
+        console.log(price)
+    }
 }
 
 function updateCartUI() {
@@ -225,6 +248,10 @@ const submitButton = document.getElementById('btn');
 
 //Object to Store User Entered Data Tempararily
 let userDetails = new Object();
+userDetails.Name = "";
+userDetails.Email = "";
+userDetails.Password = "";
+
 
 //Name Field Check Function
 
@@ -489,9 +516,12 @@ function submitForm(e) {
         userDetails.Password = confirmPassword.value;
         console.log(userDetails);
         alert("Sign Up Successful");
-        submitButton.setAttribute('type', "button");
-        submitButton.setAttribute('data-bs-dismiss', "modal");
-        submitButton.setAttribute('aria-label', "Close");
+        document.getElementById('registraion-form').style.display = "none";
+        document.querySelector('#loginForm').style.display = 'block';
+        checkEmail.value = "";
+        checkPwd.value = "";
+        emailError.innerHTML = "";
+        pwdError.innerHTML = "";
         clearSignUpForm();
         return true;
     }
@@ -641,10 +671,12 @@ checkButton.addEventListener('click', (e) => {
 
     if (userDetails.Email == checkEmail.value && userDetails.Password == checkPwd.value) {
         alert("Login Successful");
+        alert("Purchase Items Now")
         checkEmail.value = "";
         checkPwd.value = "";
         emailError.innerHTML = "";
         pwdError.innerHTML = "";
+        document.querySelector('#loginForm').style.display = 'none';
         return true;
     }
 })
@@ -675,27 +707,15 @@ verifyEmailButton.addEventListener('click', (e) => {
     } 
     if ((userDetails.Email == verifyResetEmail.value)) {
         alert("Email Verified..! Reset Password Now");
-        verifyEmailButton.setAttribute('data-bs-dismiss', "modal");
-        verifyEmailButton.setAttribute('aria-label', "Close");
-        verifyEmailButton.setAttribute('data-bs-toggle', 'modal');
-        verifyEmailButton.setAttribute('data-bs-target', '#exampleModal');
+        document.getElementById('resetPassword').style.display = "none";
+        document.getElementById('registraion-form').style.display = "block";
         document.getElementById('name').style.display = "none";
         document.getElementById('email').style.display = "none";
         document.getElementById('reset-email').style.display = "block";
         document.getElementById('btn').style.display = "none";
-        document.getElementById('exampleModalLabel').innerHTML = "Reset Password";
+        document.querySelector('#registraion-form h5').innerHTML = "Reset Password";
         verifyResetEmail.value = "";
         verifyResetEmailError.innerHTML = "";
-        // document.getElementById("form").style.display = "block";
-        // document.getElementById("registerForm").style.display = "block";
-        // document.getElementById("loginForm").style.display = "none";
-        // document.getElementById("resetPassword").style.display = "none";
-        // document.getElementById("name").style.display = "none";
-        // document.getElementById("email").style.display = "none";
-        // document.getElementById("number").style.display = "none";
-        // document.getElementById("Login").style.display = "none";
-        // document.getElementById("btn").style.display = "none";
-        // document.getElementById("resetPasswordBtn").style.display = "block";
         return true;
     }
 
@@ -707,20 +727,23 @@ const resetPasswordNow = document.getElementById('reset-email');
 resetPasswordNow.addEventListener('click', (e) => {
     e.preventDefault();
 
-    userDetails.Password = confirmPassword.value;
-    console.log(userDetails);
-    alert("Password Updated");
-    pwdErrorLogo.innerHTML = "";
-    pwdConfirmErrorLogo.innerHTML = "";
-    pwdShowButton.innerHTML = "";
-    pwdConfirmShowButton.innerHTML = "";
-    confirmPassword.style.border = "none";
-    Password.style.border = "none";
-    checkEmail.value = "";
-    checkPwd.value = ""
-    emailError.innerHTML = "";
-    pwdError.innerHTML = "";
-    return true;
+    if(confirmPassword.value.length != 0) {
+        userDetails.Password = confirmPassword.value;
+        console.log(userDetails);
+        alert("Password Updated");
+        document.getElementById('registraion-form').style.display = "none";
+        pwdErrorLogo.innerHTML = "";
+        pwdConfirmErrorLogo.innerHTML = "";
+        pwdShowButton.innerHTML = "";
+        pwdConfirmShowButton.innerHTML = "";
+        confirmPassword.style.border = "none";
+        Password.style.border = "none";
+        checkEmail.value = "";
+        checkPwd.value = ""
+        emailError.innerHTML = "";
+        pwdError.innerHTML = "";
+        return true;
+    }
 })
 
 

@@ -25,7 +25,8 @@ body::-webkit-scrollbar {
     width: 5px;
 }
 
-body::-webkit-scrollbar-track, #cartPage::-webkit-scrollbar-track {
+body::-webkit-scrollbar-track,
+#cartPage::-webkit-scrollbar-track {
     background: white;
 }
 
@@ -163,7 +164,7 @@ header button {
     border-radius: 5px;
 }
 
- header .fa-bars {
+header .fa-bars {
     font-size: 2rem;
     color: rgba(0, 0, 0, 0.794);
     font-weight: bold;
@@ -187,10 +188,13 @@ header button {
     color: #6E6B89 !important;
 }
 
-.navbar a:hover{
+.navbar a:hover {
     color: red !important;
 }
 
+.search-close {
+    display: none;
+}
 
 /* Navbar Section Styling Ends */
 
@@ -632,36 +636,50 @@ header button {
 
 /* Registraion Form Form Styling */
 
-#registraion-form .modal-body, #resetPassword .modal-body {
+#registraion-form,
+#resetPassword {
+    position: fixed;
+    top: 96px;
+    right: 31%;
+    width: 38%;
+    padding: 20px 30px;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px 5px rgba(0, 0, 0, 0.15);
+    animation: cart .3s;
+    animation-direction: alternate;
+    display: none;
+}
+
+#registraion-form form,
+#resetPassword form {
     display: flex;
     flex-direction: column;
 }
 
-#registraion-form .modal-body label, #resetPassword .modal-body label {
-    font-size: 18px;
-    padding: 0px 10px;
-}
-
-#registraion-form .modal-body input, #resetPassword .modal-body input {
-    margin: 10px;
+#registraion-form input,
+#resetPassword input {
     padding: 10px;
-    width: 95%;
+    width: 100%;
+    margin-left: auto;
     border-radius: 5px;
-    border: 1px solid rgb(134, 126, 117);
-    font-size: 1.7rem;
+    height: 40px;
+    border: 2px solid rgba(0, 0, 0, 0.484);
+    background-color: #EEEEEE;
+    font-size: 1.5rem;
 }
 
 #registraion-form input {
     font-size: 1.5rem;
 }
 
-#registraion-form .modal-header {
-    background: #e5ecf4;
+#registraion-form .form-header {
     display: flex;
     justify-content: space-evenly;
 }
 
-#registraion-form .modal-header button, #resetPassword .modal-body button {
+#registraion-form .form-header button,
+#resetPassword .reset-header button {
     position: absolute;
     top: 20px;
     right: 16px;
@@ -675,7 +693,12 @@ header button {
     border: none;
 }
 
-#resetPassword .modal-header button {
+#resetPassword .reset-header button {
+    top: 12px;
+    right: 13px;
+}
+
+#resetPassword .form-header button {
     position: absolute;
     top: 15px;
     right: 12px;
@@ -689,23 +712,22 @@ header button {
     border: none;
 }
 
-#registraion-form .modal-header .fa-xmark, #resetPassword .modal-header .fa-xmark {
+#registraion-form .form-header .fa-xmark,
+#resetPassword .reset-header .fa-xmark {
     font-size: 1.7rem;
     color: white;
 }
 
-#registraion-form h5, #resetPassword h5 {
+#registraion-form h5,
+#resetPassword h5 {
     font-size: 2.5rem;
     color: #130F40;
     font-weight: bold;
 }
 
-#resetPassword h5 {
-    margin-left: 145px;
-}
 
-
-#registraion-form .modal-footer button, #resetPassword .modal-footer button {
+#registraion-form .form-footer button,
+#resetPassword .reset-footer button {
     color: #fff;
     background: orangered;
     font-size: 2rem;
@@ -714,15 +736,20 @@ header button {
     padding: 5px 0px;
 }
 
-#registraion-form .modal-footer button:hover {
+#resetPassword .reset-footer button {
+    margin-top: 20px;
+}
+
+#registraion-form .form-footer button:hover {
     background: #1badd9;
 }
 
-#resetPassword .modal-footer button:hover {
+#resetPassword .reset-footer button:hover {
     background: #1badd9;
 }
 
-#btn, #reset-email {
+#btn,
+#reset-email {
     display: none;
 }
 
@@ -732,19 +759,26 @@ header button {
 #loginForm {
     position: fixed;
     top: 120px;
-    right: -100%;
+    right: 37px;
     transform: scale(1.2);
     width: 23%;
     padding: 20px 30px 20px 15px;
     background: #fff;
     border-radius: 5px;
     box-shadow: 2px 2px 5px 5px rgba(0, 0, 0, 0.15);
-    transition: .5s;
+    animation: login .3s;
+    animation-direction: alternate;
     display: none;
 }
 
-#loginForm.login {
-    right: 37px;
+@keyframes login {
+    0% {
+        right: -50%;
+    }
+
+    100% {
+        right: 37px;
+    }
 }
 
 #loginForm form {
@@ -809,7 +843,8 @@ header button {
 }
 
 
-#loginForm .close-btn, #cartPage .close-cart-btn {
+#loginForm .close-btn,
+#cartPage .close-cart-btn {
     position: absolute;
     top: 4%;
     right: 3%;
@@ -822,7 +857,8 @@ header button {
     height: 25px;
 }
 
-#loginForm .fa-xmark, #cartPage .close-cart-btn {
+#loginForm .fa-xmark,
+#cartPage .close-cart-btn {
     font-size: 1.7rem;
     color: white;
 }
@@ -842,8 +878,19 @@ header button {
     background: #fff;
     border-radius: 5px;
     box-shadow: 2px 2px 5px 5px rgba(0, 0, 0, 0.15);
-    transition: top 0.5s ease-in-out;
+    animation: cart .3s;
+    animation-direction: alternate;
     display: none;
+}
+
+@keyframes cart {
+    from {
+        top: -50%
+    }
+
+    to {
+        top: 93px
+    }
 }
 
 #cartPage .cart-item {
@@ -867,7 +914,7 @@ header button {
     right: 2%;
 }
 
-.cart-item h6{
+.cart-item h6 {
     font-size: 1.5rem;
     font-weight: bold;
     color: #130F40;
@@ -881,7 +928,7 @@ header button {
     text-align: left;
 }
 
-.title-price p{
+.title-price p {
     margin-left: 25px;
 }
 
@@ -952,7 +999,6 @@ header button {
     color: #73445E;
     border: 2px solid #73445E;
     border-radius: 5px
-
 }
 
 #checkout:hover {
@@ -960,6 +1006,7 @@ header button {
     color: white;
     border: 2px solid #73445E;
 }
+
 /* Cart Page Design Ends */
 
 /* Form Validation Stylings */
@@ -973,7 +1020,7 @@ header button {
 #verifyEmail,
 #verifyPassword {
     position: relative;
-    margin: 15px 0;
+    margin: 10px 0;
 
 }
 
@@ -1011,36 +1058,36 @@ header button {
 
 .fa-circle-exclamation {
     position: absolute;
-    right: 23px;
-    top: 50px;
+    right: 8px;
+    top: 10px;
     color: red;
-    font-size: 20px;
+    font-size: 19px;
 }
 
 .fa-circle-check {
     position: absolute;
-    right: 23px;
-    top: 50px;
-    color: green;
-    font-size: 20px;
+    right: 8px;
+    top: 10px;
+    color: red;
+    font-size: 19px;
 }
 
 .fa-eye {
     position: absolute;
-    right: 50px;
-    top: 49px;
+    right: 34px;
+    top: 10px;
     color: cornflowerblue;
-    font-size: 20px;
+    font-size: 19px;
     cursor: pointer;
     visibility: hidden;
 }
 
 .fa-eye-slash {
     position: absolute;
-    right: 50px;
-    top: 49px;
+    right: 34px;
+    top: 10px;
     color: cornflowerblue;
-    font-size: 20px;
+    font-size: 19px;
     cursor: pointer;
     visibility: hidden;
 }
@@ -1064,6 +1111,7 @@ header button {
     background-color: cornflowerblue;
 }
 
+
 #verifyEmailBtn:hover {
     color: red;
     background-color: cornflowerblue;
@@ -1074,7 +1122,8 @@ header button {
     background-color: cornflowerblue;
 }
 
-#registraion-form span, #emailResetError {
+#registraion-form span,
+#emailResetError {
     color: red;
     font-size: 1.3rem;
     font-weight: bold;
@@ -1089,6 +1138,13 @@ header button {
     margin-left: 10px;
 }
 
+/* Reset Password Form  */
+
+#resetPassword {
+    display: none;
+}
+
+
 
 /* Media Queries */
 
@@ -1096,6 +1152,7 @@ header button {
     header {
         padding: 0;
     }
+
     #banner div {
         width: 100%;
     }
@@ -1152,7 +1209,7 @@ header button {
     header button {
         margin-right: 5px;
     }
- 
+
     header .navbar-logo {
         width: auto;
         display: flex;
@@ -1177,41 +1234,36 @@ header button {
     #footer .row {
         margin: 50px 20px 0 20px;
     }
+
     #loginForm {
         width: 75%;
-        top: 40px;
+        top: 85px;
         right: 46px;
         z-index: 2;
     }
-    #registraion-form .modal-header button, #resetPassword .modal-header button {
-        top: 10px;
-        right: 11px;
-    }
-    
-    #registraion-form .modal-header, #resetPassword .modal-header {
-        padding: 7px;
+
+    #registraion-form,
+    #resetPassword {
+        top: 60px;
+        right: 3%;
+        width: 94%;
     }
 
-    #registraion-form h5, #resetPassword h5 {
+    #registraion-form h5,
+    #resetPassword h5 {
         font-size: 20px;
     }
 
-    #resetPassword h5 {
-        margin-left: 110px;
+    #registraion-form .form-header button,
+    #resetPassword .reset-header button {
+        top: 13px;
+        right: 11px;
     }
 
-    #registraion-form .modal-body label, #resetPassword .modal-body label {
-        font-size: 17px;
-    }
-
-    #registraion-form .modal-body input, #resetPassword .modal-body input {
-        margin: 7px;
-        padding: 9px;
-    }
     #cartPage {
         max-height: 74vh;
         width: 93%;
-        top: 5px;
+        top: 57px;
         z-index: 2;
         right: 14px;
     }
@@ -1296,14 +1348,24 @@ header button {
     #blog .card {
         width: 48vw;
     }
+
     #loginForm {
         width: 37%;
         top: 105px;
         z-index: 2;
     }
+
+    #registraion-form,
+    #resetPassword {
+        top: 80px;
+        right: 18%;
+        width: 65%;
+    }
+
     #loginForm.login {
         right: 44px;
     }
+
     #cartPage {
         max-height: 34vh;
         width: 56%;

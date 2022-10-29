@@ -497,10 +497,8 @@
         </div>
 
         <div id="login-form-bottom">
-            <div><span>Forget Your Password</span><button type="button" id="pwdReset" class="d-inline"
-                    data-bs-toggle="modal" data-bs-target="#exampleModal1">Click Here</button></div>
-            <div><span>Don't Have An Account</span><button type="button" id="registerPage" class="form-btn d-inline"
-                    data-bs-toggle="modal" data-bs-target="#exampleModal">Click Here</button></div>
+            <div><span>Forget Your Password</span><button type="button" id="pwdReset">Click Here</button></div>
+            <div><span>Don't Have An Account</span><button type="button" id="registerPage">Click Here</button></div>
         </div>
         <button id="Login" class="text-center"">Login Now</button>
 
@@ -508,69 +506,53 @@
 </div>
 
 <!-- Form Section Coding Starts Here -->
-<div id ="registraion-form">
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">REGISTRATION FORM</h5>
-                            <button type="button" data-bs-dismiss="modal" aria-label="Close"><i
-                                    class="fa-solid fa-xmark"></i></button>
-                        </div>
-                        <div class="modal-body">
-                            <div id="name">
-                                <label for="name-value">NAME</label><br />
-                                <input type="text" name="name" id="name-value" placeholder="Enter Your Name"
-                                    autocomplete="off" />
-                                <span id="nameField"></span>
-                                <span id="nameError"></span>
-                            </div>
+<div id="registraion-form">
+            <div class="form-header text-center">
+                <h5>REGISTRATION FORM</h5>
+                <button type="button"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form>
+                <div id="name">
+                    <input type="text" name="name" id="name-value" placeholder="Enter Your Name" autocomplete="off" />
+                    <span id="nameField"></span>
+                    <span id="nameError"></span>
+                </div>
 
-                            <div id="email">
-                                <label for="email-value">EMAIL</label><br />
-                                <input type="text" name="email" id="email-value" placeholder="Enter Email"
-                                    autocomplete="off" />
-                                <span id="emailField"></span>
-                                <span id="emailError"></span>
-                            </div>
+                <div id="email">
+                    <input type="text" name="email" id="email-value" placeholder="Enter Email" autocomplete="off" />
+                    <span id="emailField"></span>
+                    <span id="emailError"></span>
+                </div>
 
-                            <div id="password">
-                                <label for="pwd-value">PASSWORD</label><br />
-                                <input type="password" name="password" id="pwd-value" placeholder="Enter Password"
-                                    autocomplete="off" />
-                                <span id="pwdField"></span>
-                                <span id="pwdShow"><i class="fa-solid fa-eye"></i><i
-                                        class="fa-solid fa-eye-slash"></i></span>
-                                <span id="pwdError"></span>
-                                <div id="pwdRules">
-                                    <span>Must be atleat 8 characters</span>
-                                    <span>Must contain atleast one uppercase character</span>
-                                    <span>Must contain atleast one lowercase character</span>
-                                    <span>Must contain atleast one numerical digit (0-9)</span>
-                                    <span>Must contain atleast one special character @,#,$,%,&,_</span>
-                                    <span>Can't contain space</span>
-                                </div>
-                            </div>
-
-                            <div id="confirmPassword">
-                                <label for="pwd-confirm">CONFIRM PASSWORD</label><br />
-                                <input type="password" name="confirmPassword" id="pwd-confirm"
-                                    placeholder="Enter Confirm Password" autocomplete="off" />
-                                <span id="pwdConfirmField"></span>
-                                <span id="pwdConfirmShow"><i class="fa-solid fa-eye"></i><i
-                                        class="fa-solid fa-eye-slash"></i></span>
-                                <span id="pwdConfirmError"></span>
-                            </div>
-                        </div>
-                        <div class="modal-footer border-0 m-0 pt-0">
-                            <button class="form-control" type="submit" id="btn">Submit Form</button>
-                            <button type="button" id="reset-email">Reset Password</button>
-                        </div>
+                <div id="password">
+                    <input type="password" name="password" id="pwd-value" placeholder="Enter Password"
+                        autocomplete="off" />
+                    <span id="pwdField"></span>
+                    <span id="pwdShow"><i class="fa-solid fa-eye"></i><i class="fa-solid fa-eye-slash"></i></span>
+                    <span id="pwdError"></span>
+                    <div id="pwdRules">
+                        <span>Must be atleat 8 characters</span>
+                        <span>Must contain atleast one uppercase character</span>
+                        <span>Must contain atleast one lowercase character</span>
+                        <span>Must contain atleast one numerical digit (0-9)</span>
+                        <span>Must contain atleast one special character @,#,$,%,&,_</span>
+                        <span>Can't contain space</span>
                     </div>
                 </div>
-            </div>
+
+                <div id="confirmPassword">
+                    <input type="password" name="confirmPassword" id="pwd-confirm" placeholder="Enter Confirm Password"
+                        autocomplete="off" />
+                    <span id="pwdConfirmField"></span>
+                    <span id="pwdConfirmShow"><i class="fa-solid fa-eye"></i><i
+                            class="fa-solid fa-eye-slash"></i></span>
+                    <span id="pwdConfirmError"></span>
+                </div>
+                <div class="form-footer border-0 m-0 pt-0">
+                    <button class="form-control" type="submit" id="btn">Submit Form</button>
+                    <button type="button" id="reset-email">Reset Password</button>
+                </div>
+            </form>
 </div>
 
 <!-- Form Section Coding Ends Here -->
@@ -578,34 +560,19 @@
 <!-- Reset Password Coding Starts Here  -->
 <!-- Button trigger modal -->
 <div id="resetPassword">
-    <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1">
-        Launch demo modal
-      </button> -->
-
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Reset Password</h5>
-                    <button type="button" data-bs-dismiss="modal" aria-label="Close"><i
-                            class="fa-solid fa-xmark"></i></button>
-                </div>
-                <div class="modal-body">
-                    <div id="verifyResetEmail">
-                        <label for="email-value">Enter Your Email</label><br />
-                        <input type="email" name="email" id="verify-reset-email" placeholder="Email"
-                            autocomplete="off" />
-                        <span id="emailResetError"></span>
-                    </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" id="verifyEmailBtn" class="form-btn d-inline">Verify Email</button>
-                </div>
-            </div>
+    <form action="">
+        <div class="reset-header text-center">
+            <h5>Reset Password</h5>
+            <button type="button"><i class="fa-solid fa-xmark"></i></button>
         </div>
-    </div>
+        <div id="verifyResetEmail">
+            <input type="email" name="email" id="verify-reset-email" placeholder="Email" autocomplete="off" />
+            <span id="emailResetError"></span>
+        </div>
+        <div class="reset-footer">
+            <button type="submit" id="verifyEmailBtn">Verify Email</button>
+        </div>
+    </form>
 </div>
 <!-- Reset Password Coding Ends Here  -->
 
