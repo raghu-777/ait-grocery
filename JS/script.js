@@ -625,6 +625,7 @@ checkButton.addEventListener('click', (e) => {
     if (userArray.length == 0) {
         alert('Account Not Exist!!! Register Now');
         document.getElementById('registraion-form').style.display = "block";
+        document.getElementById('btn').style.display = "block";
         document.getElementById('loginForm').style.display = "none";
         checkEmail.value = "";
         checkPwd.value = "";
