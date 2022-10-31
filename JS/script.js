@@ -12,12 +12,12 @@ const closeResetForm = document.querySelector('.reset-header button');
 function openForm() {
     document.querySelector('#loginForm').style.display = 'block';
     document.getElementById('cartPage').style.display = "none";
-    
+
 }
 openFormBtn.addEventListener('click', openForm);
 
 
-closeRegForm.addEventListener('click',() => {
+closeRegForm.addEventListener('click', () => {
     document.getElementById('registraion-form').style.display = "none";
 })
 
@@ -85,11 +85,7 @@ closeCartBtn.addEventListener('click', closeCart);
 // Ending of Opening and Closing Cart Block 
 
 //Object to Store User Entered Data Tempararily
-let userDetails = new Object();
-userDetails.Name = "";
-userDetails.Email = "";
-userDetails.Password = "";
-
+let userArray = [];
 
 //Cart Logic
 
@@ -153,14 +149,14 @@ addToCartBtns.forEach((btn) => {
 })
 
 function addItemFunction(e) {
-        const id = e.target.parentElement.parentElement.getAttribute('data-id');
-        const img = e.target.parentElement.previousElementSibling.src;
-        const name = e.target.previousElementSibling.previousElementSibling.previousElementSibling.textContent;
-        let price = e.target.previousElementSibling.previousElementSibling.textContent;
-        price = price.replace('4.99/- -  ', '');
-        price = price.replace('/-', '');
-        const item = new CartItem(name, img, price)
-        LocalCart.addItemToLocalCart(id, item)
+    const id = e.target.parentElement.parentElement.getAttribute('data-id');
+    const img = e.target.parentElement.previousElementSibling.src;
+    const name = e.target.previousElementSibling.previousElementSibling.previousElementSibling.textContent;
+    let price = e.target.previousElementSibling.previousElementSibling.textContent;
+    price = price.replace('4.99/- -  ', '');
+    price = price.replace('/-', '');
+    const item = new CartItem(name, img, price)
+    LocalCart.addItemToLocalCart(id, item)
 }
 
 function updateCartUI() {
@@ -473,10 +469,12 @@ function submitForm(e) {
         pwdConfirmCheck();
         return false;
     } else {
+        let userDetails = new Object();
         userDetails.Name = Name.value;
         userDetails.Email = Email.value;
         userDetails.Password = confirmPassword.value;
-        console.log(userDetails);
+        userArray.push(userDetails)
+        console.log(userArray);
         alert("Sign Up Successful");
         document.getElementById('registraion-form').style.display = "none";
         document.querySelector('#loginForm').style.display = 'block';
@@ -571,6 +569,7 @@ const emailError = document.getElementById("emailCheckError");
 const pwdError = document.getElementById("pwdCheckError");
 
 const checkButton = document.getElementById('Login');
+const logoutBtn = document.getElementById('Logout');
 
 function loginEmailCheck() {
 
@@ -623,26 +622,54 @@ checkButton.addEventListener('click', (e) => {
         return false;
     }
 
-    if (userDetails.Email != checkEmail.value) {
-        emailError.innerHTML = "Email is Wrong";
-    }
-
-    if (userDetails.Password != checkPwd.value) {
-        pwdError.innerHTML = "Password is Wrong";
-    }
-
-    if (userDetails.Email == checkEmail.value && userDetails.Password == checkPwd.value) {
-        alert("Login Successful");
-        alert("Purchase Items Now")
-        document.getElementById('Login').innerHTML = 'Login SuccessFull';
-        document.getElementById('Login').disabled = "true";
+    if (userArray.length == 0) {
+        alert('Account Not Exist!!! Register Now');
+        document.getElementById('registraion-form').style.display = "block";
+        document.getElementById('loginForm').style.display = "none";
         checkEmail.value = "";
         checkPwd.value = "";
         emailError.innerHTML = "";
         pwdError.innerHTML = "";
-        document.querySelector('#loginForm').style.display = 'none';
-        return true;
+        return false;
     }
+
+    for (let Obj of userArray) {
+
+        if (Obj.Email !== checkEmail.value && checkEmail.value.length > 0) {
+            emailError.innerHTML = "Email is Wrong";
+            return false
+        }
+        if (Obj.Password !== checkPwd.value && checkPwd.value.length > 0) {
+            pwdError.innerHTML = "Password is Wrong";
+            return false
+        }
+        if (Obj.Email !== checkEmail.value && Obj.Password !== checkPwd.value) {
+            emailError.innerHTML = "Email is Wrong";
+            pwdError.innerHTML = "Password is Wrong";
+            return false
+        }
+
+        if (Obj.Email === checkEmail.value && Obj.Password === checkPwd.value) {
+            alert("Login Successful");
+            checkButton.style.display = "none"
+            logoutBtn.style.display = "block";
+            checkEmail.value = "";
+            checkPwd.value = "";
+            emailError.innerHTML = "";
+            pwdError.innerHTML = "";
+            document.querySelector('#loginForm').style.display = 'none';
+            return true;
+        }
+    }
+
+})
+
+logoutBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    alert('Logout Successfull');
+    checkButton.style.display = "block"
+    logoutBtn.style.display = "none";
+    document.querySelector('#loginForm').style.display = 'none';
 })
 
 
@@ -669,7 +696,7 @@ verifyEmailButton.addEventListener('click', (e) => {
     if (userDetails.Email != verifyResetEmail.value) {
         verifyResetEmailError.innerHTML = "Email is Wrong";
         return false;
-    } 
+    }
     if ((userDetails.Email == verifyResetEmail.value)) {
         alert("Email Verified..! Reset Password Now");
         document.getElementById('resetPassword').style.display = "none";
@@ -683,8 +710,6 @@ verifyEmailButton.addEventListener('click', (e) => {
         verifyResetEmailError.innerHTML = "";
         return true;
     }
-
-
 })
 
 const resetPasswordNow = document.getElementById('reset-email');
@@ -692,7 +717,7 @@ const resetPasswordNow = document.getElementById('reset-email');
 resetPasswordNow.addEventListener('click', (e) => {
     e.preventDefault();
 
-    if(confirmPassword.value.length != 0) {
+    if (confirmPassword.value.length != 0) {
         userDetails.Password = confirmPassword.value;
         console.log(userDetails);
         alert("Password Updated");

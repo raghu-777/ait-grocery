@@ -350,7 +350,7 @@ header button {
 
 .card a,
 .card button,
-#Login {
+#Login #Logout {
     padding: 8px 30px;
     background-color: transparent;
     text-decoration: none;
@@ -364,6 +364,12 @@ header button {
 }
 
 .card a:hover {
+    background-color: orangered;
+    color: white;
+    border: none;
+}
+
+#Logout:hover {
     background-color: orangered;
     color: white;
     border: none;
@@ -828,7 +834,7 @@ header button {
     color: #8D7A72;
 }
 
-#Login {
+#Login, #Logout {
     padding: 0px 15px;
     height: 33px;
     font-size: 1.5rem;
@@ -836,10 +842,19 @@ header button {
     border-radius: 5px;
 }
 
+#Logout {
+    display: none;
+}
+
 #Login:hover {
     background-color: orangered;
     color: white;
     border: none;
+}
+
+.login-btns {
+    display: flex;
+    justify-content: center;
 }
 
 
