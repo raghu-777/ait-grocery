@@ -1,3 +1,20 @@
+// Form Validation 
+
+const Name = document.getElementById('name-value')
+const Email = document.getElementById('email-value');
+const Password = document.getElementById('pwd-value');
+const confirmPassword = document.getElementById('pwd-confirm');
+
+const nameErrorLogo = document.getElementById('nameField');
+const emailErrorLogo = document.getElementById('emailField');
+const pwdErrorLogo = document.getElementById('pwdField');
+const pwdConfirmErrorLogo = document.getElementById('pwdConfirmField');
+
+const pwdShowButton = document.getElementById('pwdShow');
+const pwdConfirmShowButton = document.getElementById('pwdConfirmShow');
+
+const submitButton = document.getElementById('btn');
+
 
 // Opening and CLosing Login Form 
 
@@ -19,6 +36,7 @@ openFormBtn.addEventListener('click', openForm);
 
 closeRegForm.addEventListener('click', () => {
     document.getElementById('registraion-form').style.display = "none";
+    pwdConfirmHideFun();
 })
 
 
@@ -42,6 +60,7 @@ openRegPage.addEventListener('click', () => {
     document.getElementById('email').style.display = "block";
     document.getElementById('reset-email').style.display = "none";
     document.querySelector('#registraion-form h5').innerHTML = "REGISTRATION FORM";
+    pwdConfirmHideFun();
     checkEmail.value = "";
     checkPwd.value = "";
     emailError.innerHTML = "";
@@ -57,6 +76,8 @@ pwdReset.addEventListener('click', () => {
 
 closeResetForm.addEventListener('click', () => {
     document.getElementById('resetPassword').style.display = 'none';
+    verifyResetEmail.value = "";
+    verifyResetEmailError.innerHTML = "";
 })
 
 
@@ -223,24 +244,6 @@ document.addEventListener('DOMContentLoaded', () => { updateCartUI() })
 
 
 //End Of Add to Cart Code Section
-
-
-// Form Validation 
-
-const Name = document.getElementById('name-value')
-const Email = document.getElementById('email-value');
-const Password = document.getElementById('pwd-value');
-const confirmPassword = document.getElementById('pwd-confirm');
-
-const nameErrorLogo = document.getElementById('nameField');
-const emailErrorLogo = document.getElementById('emailField');
-const pwdErrorLogo = document.getElementById('pwdField');
-const pwdConfirmErrorLogo = document.getElementById('pwdConfirmField');
-
-const pwdShowButton = document.getElementById('pwdShow');
-const pwdConfirmShowButton = document.getElementById('pwdConfirmShow');
-
-const submitButton = document.getElementById('btn');
 
 
 //Name Field Check Function
@@ -634,23 +637,18 @@ checkButton.addEventListener('click', (e) => {
         return false;
     }
 
-    for (let Obj of userArray) {
+    for (let i = 0; i < userArray.length; i++) {
 
-        if (Obj.Email !== checkEmail.value && checkEmail.value.length > 0) {
+        if (userArray[i].Email !== checkEmail.value && checkEmail.value.length == 0) {
             emailError.innerHTML = "Email is Wrong";
             return false
         }
-        if (Obj.Password !== checkPwd.value && checkPwd.value.length > 0) {
-            pwdError.innerHTML = "Password is Wrong";
-            return false
-        }
-        if (Obj.Email !== checkEmail.value && Obj.Password !== checkPwd.value) {
-            emailError.innerHTML = "Email is Wrong";
+        if (userArray[i].Password !== checkPwd.value && checkPwd.value.length == 0) {
             pwdError.innerHTML = "Password is Wrong";
             return false
         }
 
-        if (Obj.Email === checkEmail.value && Obj.Password === checkPwd.value) {
+        if (userArray[i].Email === checkEmail.value && userArray[i].Password === checkPwd.value) {
             alert("Login Successful");
             checkButton.style.display = "none"
             logoutBtn.style.display = "block";
@@ -662,12 +660,11 @@ checkButton.addEventListener('click', (e) => {
             return true;
         }
     }
-
 })
 
 logoutBtn.addEventListener('click', (e) => {
     e.preventDefault();
-    alert('Logout Successfull');
+    alert('Logout Done!');
     checkButton.style.display = "block"
     logoutBtn.style.display = "none";
     document.querySelector('#loginForm').style.display = 'none';
@@ -680,6 +677,8 @@ logoutBtn.addEventListener('click', (e) => {
 const verifyEmailButton = document.getElementById('verifyEmailBtn');
 const verifyResetEmail = document.getElementById('verify-reset-email');
 const verifyResetEmailError = document.getElementById('emailResetError');
+
+let mail = "";
 
 document.querySelector('#resetPassword .fa-xmark').addEventListener('click', () => {
     verifyResetEmail.value = "";
@@ -694,22 +693,30 @@ verifyEmailButton.addEventListener('click', (e) => {
         return false;
     }
 
-    if (userDetails.Email != verifyResetEmail.value) {
-        verifyResetEmailError.innerHTML = "Email is Wrong";
+    if (userArray.length == 0) {
+        alert('Email Not Exist!!!');
         return false;
     }
-    if ((userDetails.Email == verifyResetEmail.value)) {
-        alert("Email Verified..! Reset Password Now");
-        document.getElementById('resetPassword').style.display = "none";
-        document.getElementById('registraion-form').style.display = "block";
-        document.getElementById('name').style.display = "none";
-        document.getElementById('email').style.display = "none";
-        document.getElementById('reset-email').style.display = "block";
-        document.getElementById('btn').style.display = "none";
-        document.querySelector('#registraion-form h5').innerHTML = "Reset Password";
-        verifyResetEmail.value = "";
-        verifyResetEmailError.innerHTML = "";
-        return true;
+
+    for (let i = 0; i < userArray.length; i++) {
+        if (userArray[i].Email === verifyResetEmail.value) {
+            alert("Email Verified..! Reset Password Now");
+            mail = userArray[i].Email;
+            console.log(mail);
+            document.getElementById('resetPassword').style.display = "none";
+            document.getElementById('registraion-form').style.display = "block";
+            document.getElementById('name').style.display = "none";
+            document.getElementById('email').style.display = "none";
+            document.getElementById('reset-email').style.display = "block";
+            document.getElementById('btn').style.display = "none";
+            document.querySelector('#registraion-form h5').innerHTML = "Reset Password";
+            verifyResetEmail.value = "";
+            verifyResetEmailError.innerHTML = "";
+            clearSignUpForm();
+            return true;
+        } else {
+            verifyResetEmailError.innerHTML = "Email is Wrong";
+        }
     }
 })
 
@@ -718,23 +725,33 @@ const resetPasswordNow = document.getElementById('reset-email');
 resetPasswordNow.addEventListener('click', (e) => {
     e.preventDefault();
 
-    if (confirmPassword.value.length != 0) {
-        userDetails.Password = confirmPassword.value;
-        console.log(userDetails);
-        alert("Password Updated");
-        document.getElementById('registraion-form').style.display = "none";
-        pwdErrorLogo.innerHTML = "";
-        pwdConfirmErrorLogo.innerHTML = "";
-        pwdShowButton.innerHTML = "";
-        pwdConfirmShowButton.innerHTML = "";
-        confirmPassword.style.border = "none";
-        Password.style.border = "none";
-        checkEmail.value = "";
-        checkPwd.value = ""
-        emailError.innerHTML = "";
-        pwdError.innerHTML = "";
-        return true;
+    for (let Obj of userArray) {
+        if (confirmPassword.value.length != 0 && Obj.Email.match([mail])) {
+            Obj.Password = confirmPassword.value;
+            console.log(userArray);
+            alert("Password Updated");
+            document.getElementById('registraion-form').style.display = "none";
+            Password.value = "";
+            confirmPassword.value = "";
+            pwdErrorLogo.innerHTML = "";
+            pwdConfirmErrorLogo.innerHTML = "";
+            document.getElementById('pwdError').innerHTML = "";
+            document.getElementById('pwdRules').style.display = "none";
+            document.getElementById('pwdConfirmError').innerHTML = "";
+            pwdErrorLogo.innerHTML = "";
+            pwdConfirmErrorLogo.innerHTML = "";
+            pwdShowButton.innerHTML = "";
+            pwdConfirmShowButton.innerHTML = "";
+            confirmPassword.style.border = "none";
+            Password.style.border = "none";
+            checkEmail.value = "";
+            checkPwd.value = ""
+            emailError.innerHTML = "";
+            pwdError.innerHTML = "";
+            return true;
+        }
     }
+
 })
 
 
